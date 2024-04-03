@@ -86,7 +86,9 @@ operators.forEach(element => {
     
 });
 
+// evaluate equation, 
 function equalEquation() {
+// handle equals before equation entered
     if (num1 != "" && num2 != "" && operator != "") {
         num1 = parseFloat(num1);
         num2 = parseFloat(num2);
@@ -98,6 +100,7 @@ function equalEquation() {
             operator = 2;}
         else if (operator === "/") {
             operator = 3;}
+// handle dividing by 0
         if (operator === 3 && num2 === 0) {
             output.innerHTML = "Woah there! You Can't Divide by 0 Partner";
         }
@@ -113,4 +116,4 @@ function equalEquation() {
 equals.addEventListener('click', equalEquation)
 
 
-
+// find way to limit output to 20 characters
