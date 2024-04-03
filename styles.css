@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    
+}
+
+.calculatorBody {
+    display: flex;
+    flex-direction: column;
+}
+
+#display {
+    min-width: 500px;
+    min-height: 50px;
+    
+}
