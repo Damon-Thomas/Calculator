@@ -26,6 +26,13 @@ function operate() {
         return divide(num1, num2);}
 }
 
+// reset global variables
+function clearDisplay() {
+    num1 = null
+    operator = null
+    num2 = null
+}
+
 
 
 // Global Variables
@@ -34,10 +41,14 @@ let operator = null
 let num2 = null
 let displayValue = 0
 
+// set class variables
 numbers = document.querySelectorAll(".numbers")
 operators = document.querySelectorAll(".operator")
+clearButton = document.querySelector(".clear")
 
 
+// clear button functionality
+clearButton.addEventListener('click', clearDisplay);
 
 // use buttons to set num1 and num2
 numbers.forEach(element => {
