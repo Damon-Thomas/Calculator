@@ -26,25 +26,31 @@ function operate() {
         return divide(num1, num2);}
 }
 
+
+
 // reset global variables
 function clearDisplay() {
-    num1 = null
-    operator = null
-    num2 = null
+    num1 = ""
+    operator = ""
+    num2 = ""
+    output.innerHTML = ""
+    
 }
 
 
 
 // Global Variables
-let num1 = null
-let operator = null
-let num2 = null
-let displayValue = 0
+let num1 = ""
+let operator = ""
+let num2 = ""
+
+
 
 // set class variables
 numbers = document.querySelectorAll(".numbers")
 operators = document.querySelectorAll(".operator")
 clearButton = document.querySelector(".clear")
+output = document.querySelector("#output")
 
 
 // clear button functionality
@@ -53,15 +59,14 @@ clearButton.addEventListener('click', clearDisplay);
 // use buttons to set num1 and num2
 numbers.forEach(element => {
     element.addEventListener('click', function() {
-        if (operator != null) {
-            if (num2 == null) {
-                num2 = ""};
+        if (operator != "") {
             num2 += element.textContent;
+            output.innerHTML = num2
+
         }
         else {
-            if (num1 == null) {
-                num1 = "";};
             num1 += element.textContent;
+            output.innerHTML = num1
         }
     })
     
@@ -70,20 +75,34 @@ numbers.forEach(element => {
 // change operator
 operators.forEach(element => {
     element.addEventListener('click', function() {
-        if (operator == null) {
+        if (operator == "") {
             operator = element.textContent
+            output.innerHTML = operator
         }
     })
     
 });
 
+// equals button functionality
+equals.addEventListener('click', function() {
+    num1 = parseFloat(num1)
+    num2 = parseFloat(num2)
+    if (operator === "+") {
+        operator = 0;}
+    else if (operator === "-") {
+        operator = 1;}
+    else if (operator === "x") {
+        operator = 2;}
+    else if (operator === "/") {
+        operator = 3;}
+    answer = operate()
+    output.innerHTML = answer
+    num1 = answer
+    num2 = ""
+    operator = ""
+}
+
+)
 
 
 
-
-
-
-
-console.log(num1)
-console.log(operator)
-console.log(num2)
