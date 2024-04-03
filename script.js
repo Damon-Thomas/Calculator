@@ -77,32 +77,40 @@ operators.forEach(element => {
     element.addEventListener('click', function() {
         if (operator == "") {
             operator = element.textContent
-            output.innerHTML = operator
+            output.innerHTML = operator}
+        else{
+            equalEquation()
+            operator = element.textContent
         }
     })
     
 });
 
-// equals button functionality
-equals.addEventListener('click', function() {
-    num1 = parseFloat(num1)
-    num2 = parseFloat(num2)
-    if (operator === "+") {
-        operator = 0;}
-    else if (operator === "-") {
-        operator = 1;}
-    else if (operator === "x") {
-        operator = 2;}
-    else if (operator === "/") {
-        operator = 3;}
-    answer = operate()
-    output.innerHTML = answer
-    num1 = answer
-    num2 = ""
-    operator = ""
-}
+function equalEquation() {
+    if (num1 != "" && num2 != "" && operator != "") {
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+        if (operator === "+") {
+            operator = 0;}
+        else if (operator === "-") {
+            operator = 1;}
+        else if (operator === "x") {
+            operator = 2;}
+        else if (operator === "/") {
+            operator = 3;}
+        if (operator === 3 && num2 === 0) {
+            output.innerHTML = "Woah there! You Can't Divide by 0 Partner";
+        }
+        else {
+            answer = operate();
+            output.innerHTML = answer;
+            num1 = answer;
+            num2 = "";
+            operator = ""};
+}}
 
-)
+// equals button functionality
+equals.addEventListener('click', equalEquation)
 
 
 
