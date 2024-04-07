@@ -62,10 +62,9 @@ numbers.forEach(element => {
     element.addEventListener('click', function() {
         output.style.fontSize = "5vh"
         if (operator != "") {
+            if (num2.length < 15) {
             num2 += element.textContent;
-            output.innerHTML = num2
-
-        }
+            output.innerHTML = num2}}
         else {
             if (answer === true) {
             num1 = element.textContent;
@@ -73,8 +72,9 @@ numbers.forEach(element => {
             answer = false
             }
             else {
-            num1 += element.textContent;
-            output.innerHTML = num1;}
+                if (num1.length < 15) {
+                num1 += element.textContent;
+                output.innerHTML = num1;}}
         }
     })
     
@@ -88,11 +88,9 @@ operators.forEach(element => {
         operators.forEach(element => {element.style.backgroundColor = "#f7ad1977"})
         if (operator == "") {
             operator = element.textContent
-            output.innerHTML = operator
             element.style.backgroundColor = "#f7ad19"}
         else{
             equalEquation()
-            operator = element.textContent
             element.style.backgroundColor = "#f7ad19"
         }
     })
@@ -102,6 +100,12 @@ operators.forEach(element => {
 // evaluate equation, 
 function equalEquation() {
 // handle equals before equation entered
+    if (num1 === "918273645" && operator === "") {
+        output.innerHTML = "Access Granted!";
+        num1 = "";
+        operator = "";
+        num2 = "";
+    }
     if (num1 != "" && num2 != "" && operator != "") {
         num1 = parseFloat(num1);
         num2 = parseFloat(num2);
@@ -124,12 +128,27 @@ function equalEquation() {
         }
         else {
             answer = operate();
+            if (answer.toString().length > 15) {
+            answer = roundToFifteenDigits(answer)
+            }
             output.innerHTML = answer;
             num1 = answer;
             num2 = "";
-            operator = ""
+            operator = "";
             answer = true};
+            operators.forEach(element => {element.style.backgroundColor = "#f7ad1977"})
 }}
+
+function roundToFifteenDigits(number) {
+    number = number.toString();
+    if (parseInt(number[15]) >= 5) {
+        number[14] = (parseIntnumber[14] + 1).toString()
+    }
+    number = number.split("")
+    number = number.slice(0,15)
+    number = number.join("")
+    return parseFloat(number)
+}
 
 // equals button functionality
 equals.addEventListener('click', equalEquation)
