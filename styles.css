@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     /* justify-content: space-between; */
-    background-color: lightgrey;
+    background-color: darkgray;
     border: solid black;
 }
 
@@ -44,7 +44,7 @@ body {
 
 .operatorButtons {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-left: .5vh;
     
 }
@@ -62,17 +62,17 @@ body {
 
 .operator, .numbers, .equals, .clear {
     font-size: 5vh;
-    
+    border: solid black;
+    box-shadow: 2px 2px 2px black;
 }
 
 
 .operator {
-    background-color: #f7ad19;
-    opacity: .7;
+    background-color: #f7ad1977;
 }
 
 .numbers {
-    background-color: #9fe7f5;
+    background-color: #9fe7f5 ;
 }
 
 .equals {

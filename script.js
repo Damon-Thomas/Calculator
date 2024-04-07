@@ -34,7 +34,7 @@ function clearDisplay() {
     operator = ""
     num2 = ""
     output.innerHTML = ""
-    
+    operators.forEach(element => {element.style.backgroundColor = "#f7ad1977"});
 }
 
 
@@ -43,6 +43,7 @@ function clearDisplay() {
 let num1 = ""
 let operator = ""
 let num2 = ""
+let answer = false;
 
 
 
@@ -59,14 +60,21 @@ clearButton.addEventListener('click', clearDisplay);
 // use buttons to set num1 and num2
 numbers.forEach(element => {
     element.addEventListener('click', function() {
+        output.style.fontSize = "5vh"
         if (operator != "") {
             num2 += element.textContent;
             output.innerHTML = num2
 
         }
         else {
-            num1 += element.textContent;
+            if (answer === true) {
+            num1 = element.textContent;
             output.innerHTML = num1
+            answer = false
+            }
+            else {
+            num1 += element.textContent;
+            output.innerHTML = num1;}
         }
     })
     
@@ -75,12 +83,17 @@ numbers.forEach(element => {
 // change operator
 operators.forEach(element => {
     element.addEventListener('click', function() {
+        if (num1 === ""){
+            return }
+        operators.forEach(element => {element.style.backgroundColor = "#f7ad1977"})
         if (operator == "") {
             operator = element.textContent
-            output.innerHTML = operator}
+            output.innerHTML = operator
+            element.style.backgroundColor = "#f7ad19"}
         else{
             equalEquation()
             operator = element.textContent
+            element.style.backgroundColor = "#f7ad19"
         }
     })
     
@@ -102,14 +115,20 @@ function equalEquation() {
             operator = 3;}
 // handle dividing by 0
         if (operator === 3 && num2 === 0) {
+            output.style.fontSize = "3vh"
             output.innerHTML = "Woah there! You Can't Divide by 0 Partner";
+            num1 = ""
+            operator = ""
+            num2 = ""
+            
         }
         else {
             answer = operate();
             output.innerHTML = answer;
             num1 = answer;
             num2 = "";
-            operator = ""};
+            operator = ""
+            answer = true};
 }}
 
 // equals button functionality
