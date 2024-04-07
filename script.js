@@ -104,11 +104,16 @@ operators.forEach(element => {
         if (num1 === ""){
             return }
         operators.forEach(element => {element.style.backgroundColor = "#f7ad1977"})
-        if (operator == "") {
+        if (operator === "" && num2 === "")  {
             operator = element.textContent
             element.style.backgroundColor = "#f7ad19"}
+        else if (element.textContent === operator && num2 == "") {
+            operator = ""
+            operators.forEach(element => {element.style.backgroundColor = "#f7ad1977"})
+        }
         else{
             equalEquation()
+            operator = element.textContent
             element.style.backgroundColor = "#f7ad19"
         }
     })
