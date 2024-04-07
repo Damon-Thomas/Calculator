@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: darkgray;
+    background-color: #555555;
     border: solid black;
 }
 
@@ -56,8 +56,21 @@ body {
 }
 
 .clear {
-    width: 42vh;
+    width: 25vh;
     height: 7vh;
+    background-color: #F27f0C
+}
+
+#delete {
+    width: 15vh;
+    background-color: #053f5c;
+    color: #000;
+}
+
+.commands {
+    display: flex;
+    width: 42vh;
+    justify-content: space-between;
 }
 
 .operator, .numbers, .equals, .clear {
@@ -82,7 +95,3 @@ body {
     
 }
 
-.clear {
-    background-color: #F27f0C
-    ;
-}

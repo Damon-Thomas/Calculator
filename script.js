@@ -52,10 +52,27 @@ numbers = document.querySelectorAll(".numbers")
 operators = document.querySelectorAll(".operator")
 clearButton = document.querySelector(".clear")
 output = document.querySelector("#output")
-
+del = document.querySelector("#delete")
 
 // clear button functionality
 clearButton.addEventListener('click', clearDisplay);
+del.addEventListener('click', deleteNumber)
+
+
+
+
+// in progresss
+function deleteNumber() {
+    if (num1 != "" && operate != "" && num2 != "") {
+        num2 = num2.replace(/.$/, "");
+        output.innerHTML = num2;}
+    else if (operator == "" && num2 == "" && answer != true){
+        num1 = num1.replace(/.$/, "");
+        output.innerHTML = num1;}}
+
+
+
+
 
 // use buttons to set num1 and num2
 numbers.forEach(element => {
@@ -72,6 +89,7 @@ numbers.forEach(element => {
             answer = false
             }
             else {
+                answer = false
                 if (num1.length < 15) {
                 num1 += element.textContent;
                 output.innerHTML = num1;}}
@@ -127,12 +145,12 @@ function equalEquation() {
             
         }
         else {
-            answer = operate();
-            if (answer.toString().length > 15) {
-            answer = roundToFifteenDigits(answer)
+            theAnswer = operate();
+            if (theAnswer.toString().length > 15) {
+            theAnswer = roundToFifteenDigits(theAnswer)
             }
-            output.innerHTML = answer;
-            num1 = answer;
+            output.innerHTML = theAnswer;
+            num1 = theAnswer;
             num2 = "";
             operator = "";
             answer = true};
@@ -142,7 +160,7 @@ function equalEquation() {
 function roundToFifteenDigits(number) {
     number = number.toString();
     if (parseInt(number[15]) >= 5) {
-        number[14] = (parseIntnumber[14] + 1).toString()
+        number[14] = (parseInt(number[14]) + 1).toString()
     }
     number = number.split("")
     number = number.slice(0,15)
@@ -154,4 +172,3 @@ function roundToFifteenDigits(number) {
 equals.addEventListener('click', equalEquation)
 
 
-// find way to limit output to 20 characters
