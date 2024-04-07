@@ -138,7 +138,7 @@ function equalEquation() {
             operator = 1;}
         else if (operator === "x") {
             operator = 2;}
-        else if (operator === "/") {
+        else if (operator === "÷") {
             operator = 3;}
 // handle dividing by 0
         if (operator === 3 && num2 === 0) {
