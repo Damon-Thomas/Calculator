@@ -80,19 +80,21 @@ numbers.forEach(element => {
         output.style.fontSize = "5vh"
         if (operator != "") {
             if (num2.length < 15) {
-            num2 += element.textContent;
-            output.innerHTML = num2}}
+                if (element.textContent != "." || (num2.includes(".") != true)) {
+                    num2 += element.textContent;
+                    output.innerHTML = num2}}}
         else {
             if (answer === true) {
-            num1 = element.textContent;
-            output.innerHTML = num1
-            answer = false
+                num1 = element.textContent;
+                output.innerHTML = num1
+                answer = false
             }
             else {
                 answer = false
                 if (num1.length < 15) {
-                num1 += element.textContent;
-                output.innerHTML = num1;}}
+                    if (element.textContent != "." || (num1.includes(".") != true)) {
+                        num1 += element.textContent;
+                        output.innerHTML = num1;}}}
         }
     })
     
